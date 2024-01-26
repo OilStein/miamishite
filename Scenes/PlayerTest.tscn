@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://cji4tt4raliwc"]
+
+[ext_resource type="PackedScene" uid="uid://diplkpmcm4eae" path="res://Scenes/Player.tscn" id="1_ek7nf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f4pnn"]
+size = Vector2(20, 4)
+
+[sub_resource type="Gradient" id="Gradient_i2lwy"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qey5l"]
+gradient = SubResource("Gradient_i2lwy")
+width = 20
+
+[node name="PlayerTest" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_ek7nf")]
+
+[node name="Wall" type="CharacterBody2D" parent="."]
+position = Vector2(75, 45)
+
+[node name="Collider" type="CollisionShape2D" parent="Wall"]
+shape = SubResource("RectangleShape2D_f4pnn")
+
+[node name="Sprite" type="Sprite2D" parent="Wall"]
+scale = Vector2(1, 4)
+texture = SubResource("GradientTexture1D_qey5l")
+
+[node name="Camera2D" type="Camera2D" parent="."]
