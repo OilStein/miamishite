@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cji4tt4raliwc"]
+[gd_scene load_steps=6 format=3 uid="uid://cji4tt4raliwc"]
 
 [ext_resource type="PackedScene" uid="uid://diplkpmcm4eae" path="res://Scenes/Player.tscn" id="1_ek7nf"]
+[ext_resource type="PackedScene" uid="uid://bbum5plvdehjs" path="res://Scenes/Camera.tscn" id="2_vmcqf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f4pnn"]
 size = Vector2(20, 4)
@@ -25,4 +26,5 @@ shape = SubResource("RectangleShape2D_f4pnn")
 scale = Vector2(1, 4)
 texture = SubResource("GradientTexture1D_qey5l")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera" parent="." node_paths=PackedStringArray("Target") instance=ExtResource("2_vmcqf")]
+Target = NodePath("../Player")

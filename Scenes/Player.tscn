@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://diplkpmcm4eae"]
+[gd_scene load_steps=7 format=3 uid="uid://diplkpmcm4eae"]
 
 [ext_resource type="Script" path="res://Src/CharacterMovement.cs" id="1_eqgsy"]
+[ext_resource type="Script" path="res://Src/CharacterRotation.cs" id="2_nwp0j"]
 [ext_resource type="Script" path="res://Src/PlayerMovement.cs" id="2_v27w2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n688f"]
@@ -21,6 +22,7 @@ shape = SubResource("CircleShape2D_n688f")
 [node name="Sprite" type="Sprite2D" parent="."]
 scale = Vector2(1, 4)
 texture = SubResource("GradientTexture1D_qey5l")
+script = ExtResource("2_nwp0j")
 
 [node name="PlayerMovement" type="Node" parent="."]
 script = ExtResource("2_v27w2")
