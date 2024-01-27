@@ -55,10 +55,6 @@ script = ExtResource("1_m8a1q")
 [node name="Player" parent="." instance=ExtResource("2_1efnd")]
 position = Vector2(-125, -131)
 
-[node name="Sprite" parent="Player" index="1"]
-frame = 4
-frame_progress = 0.946957
-
 [node name="Wall" type="StaticBody2D" parent="."]
 position = Vector2(75, 45)
 collision_mask = 7
@@ -93,7 +89,7 @@ texture = ExtResource("5_7dqlb")
 [node name="Portrait" type="AnimatedSprite2D" parent="HUD/GameRunning" index="2"]
 position = Vector2(1118, 319)
 sprite_frames = SubResource("SpriteFrames_ug8nw")
-frame = 3
+frame = 1
 
 [node name="UIState" parent="HUD" index="4" node_paths=PackedStringArray("GameState")]
 GameState = NodePath("../..")
