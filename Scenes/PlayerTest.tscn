@@ -1,10 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://cji4tt4raliwc"]
+[gd_scene load_steps=10 format=3 uid="uid://cji4tt4raliwc"]
 
 [ext_resource type="Script" path="res://Src/GameState.cs" id="1_bhuxi"]
 [ext_resource type="PackedScene" uid="uid://diplkpmcm4eae" path="res://Scenes/Player.tscn" id="1_ek7nf"]
 [ext_resource type="PackedScene" uid="uid://bbum5plvdehjs" path="res://Scenes/Camera.tscn" id="2_vmcqf"]
 [ext_resource type="PackedScene" uid="uid://cg2r4dgtlaq8o" path="res://Scenes/HUD.tscn" id="4_tibww"]
-[ext_resource type="Texture2D" uid="uid://csfnn35dyn50t" path="res://Graphics/toilet.png" id="5_n0oa5"]
+[ext_resource type="PackedScene" uid="uid://rc4s62pm3efl" path="res://Scenes/WinArea.tscn" id="5_y37bc"]
 [ext_resource type="PackedScene" uid="uid://dacfibn4jxjde" path="res://Scenes/Enemy.tscn" id="6_2xwuu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f4pnn"]
@@ -15,9 +15,6 @@ size = Vector2(256, 16)
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_qey5l"]
 gradient = SubResource("Gradient_i2lwy")
 width = 16
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uc1mu"]
-size = Vector2(80, 80)
 
 [node name="PlayerTest" type="Node"]
 script = ExtResource("1_bhuxi")
@@ -48,16 +45,7 @@ offset_right = -5.0
 [node name="UIState" parent="HUD" index="4" node_paths=PackedStringArray("GameState")]
 GameState = NodePath("../..")
 
-[node name="WinArea" type="Area2D" parent="."]
-position = Vector2(-679, -376)
-collision_layer = 2
-collision_mask = 7
-
-[node name="Area" type="CollisionShape2D" parent="WinArea"]
-shape = SubResource("RectangleShape2D_uc1mu")
-
-[node name="Sprite" type="Sprite2D" parent="WinArea"]
-texture = ExtResource("5_n0oa5")
+[node name="WinArea" parent="." instance=ExtResource("5_y37bc")]
 
 [node name="Enemy" parent="." instance=ExtResource("6_2xwuu")]
 position = Vector2(-257, 238)
@@ -77,6 +65,5 @@ position = Vector2(324, 407)
 [connection signal="GameStatusChange" from="." to="HUD/UIState" method="_GameStatusChanged"]
 [connection signal="body_entered" from="WinArea" to="." method="WinTriggerEntered" unbinds=1]
 
-[editable path="Player"]
 [editable path="HUD"]
 [editable path="Enemy"]
