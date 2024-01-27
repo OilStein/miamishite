@@ -1,10 +1,22 @@
-[gd_scene load_steps=2 format=3 uid="uid://cg2r4dgtlaq8o"]
+[gd_scene load_steps=5 format=3 uid="uid://cg2r4dgtlaq8o"]
 
 [ext_resource type="Script" path="res://Src/UIState.cs" id="1_ah0em"]
+
+[sub_resource type="Gradient" id="Gradient_h1tn4"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 0.501961)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_bpehp"]
+gradient = SubResource("Gradient_h1tn4")
+
+[sub_resource type="LabelSettings" id="LabelSettings_e0k3j"]
+font_size = 32
+font_color = Color(1, 0.207843, 0.196078, 1)
 
 [node name="HUD" type="CanvasLayer"]
 
 [node name="GameRunning" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,7 +32,6 @@ offset_right = 1261.0
 offset_bottom = 39.0
 
 [node name="GameOver" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -28,14 +39,32 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Cringe" type="Label" parent="GameOver"]
-layout_mode = 0
-offset_left = 609.0
-offset_top = 310.0
-offset_right = 737.0
-offset_bottom = 374.0
+[node name="Background" type="TextureRect" parent="GameOver"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.485
+anchor_right = 1.0
+anchor_bottom = 0.485
+offset_top = -52.2
+offset_bottom = 55.8
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_bpehp")
+
+[node name="Cringe" type="Label" parent="GameOver/Background"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.526
+anchor_top = 0.475
+anchor_right = 0.526
+anchor_bottom = 0.475
+offset_left = -137.28
+offset_top = -51.3
+offset_right = 136.72
+offset_bottom = 56.7
 pivot_offset = Vector2(64, 32)
 text = "Cringe"
+label_settings = SubResource("LabelSettings_e0k3j")
 horizontal_alignment = 1
 vertical_alignment = 1
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cji4tt4raliwc"]
+[gd_scene load_steps=12 format=3 uid="uid://cji4tt4raliwc"]
 
 [ext_resource type="Script" path="res://Src/GameState.cs" id="1_bhuxi"]
 [ext_resource type="PackedScene" uid="uid://diplkpmcm4eae" path="res://Scenes/Player.tscn" id="1_ek7nf"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://cg2r4dgtlaq8o" path="res://Scenes/HUD.tscn" id="4_tibww"]
 [ext_resource type="PackedScene" uid="uid://rc4s62pm3efl" path="res://Scenes/WinArea.tscn" id="5_y37bc"]
 [ext_resource type="PackedScene" uid="uid://dacfibn4jxjde" path="res://Scenes/Enemy.tscn" id="6_2xwuu"]
+[ext_resource type="Script" path="res://Src/GameSoundEffects.cs" id="7_gjvin"]
+[ext_resource type="AudioStream" uid="uid://blx60ru8hivx8" path="res://SFX/sfx_fart_03.ogg" id="8_2fips"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f4pnn"]
 size = Vector2(256, 16)
@@ -61,8 +63,13 @@ position = Vector2(-202, 407)
 [node name="PathNode2" type="Node2D" parent="EnemyPath"]
 position = Vector2(324, 407)
 
+[node name="GameSoundEffects" type="AudioStreamPlayer" parent="."]
+script = ExtResource("7_gjvin")
+FailureSound = ExtResource("8_2fips")
+
 [connection signal="GameStatusChange" from="." to="Player/PlayerMovement" method="OnGameStatusChanged"]
 [connection signal="GameStatusChange" from="." to="HUD/UIState" method="_GameStatusChanged"]
+[connection signal="GameStatusChange" from="." to="GameSoundEffects" method="GameStatusChanged"]
 [connection signal="body_entered" from="WinArea" to="." method="WinTriggerEntered" unbinds=1]
 
 [editable path="HUD"]
