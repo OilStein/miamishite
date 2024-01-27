@@ -1,0 +1,109 @@
+[gd_scene load_steps=15 format=3 uid="uid://4h70y02rihdn"]
+
+[ext_resource type="Script" path="res://Src/GameState.cs" id="1_m8a1q"]
+[ext_resource type="PackedScene" uid="uid://diplkpmcm4eae" path="res://Scenes/Player.tscn" id="2_1efnd"]
+[ext_resource type="PackedScene" uid="uid://bbum5plvdehjs" path="res://Scenes/Camera.tscn" id="3_rpjgp"]
+[ext_resource type="PackedScene" uid="uid://cg2r4dgtlaq8o" path="res://Scenes/HUD.tscn" id="4_68e40"]
+[ext_resource type="Texture2D" uid="uid://n5wyy2pqwfpw" path="res://Graphics/ShiteBar.png" id="5_7dqlb"]
+[ext_resource type="Texture2D" uid="uid://derip2nlgjqqw" path="res://Graphics/Portraits/stage1.png" id="6_me80q"]
+[ext_resource type="Texture2D" uid="uid://dak71gc588404" path="res://Graphics/Portraits/stage2.png" id="7_5y5a7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f4pnn"]
+size = Vector2(256, 16)
+
+[sub_resource type="Gradient" id="Gradient_i2lwy"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qey5l"]
+gradient = SubResource("Gradient_i2lwy")
+width = 16
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ug8nw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_me80q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_5y5a7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uc1mu"]
+size = Vector2(64, 64)
+
+[sub_resource type="Gradient" id="Gradient_pviit"]
+offsets = PackedFloat32Array(0, 0.138554)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_54amn"]
+gradient = SubResource("Gradient_pviit")
+width = 16
+
+[node name="PlayerTest" type="Node"]
+script = ExtResource("1_m8a1q")
+
+[node name="Player" parent="." instance=ExtResource("2_1efnd")]
+position = Vector2(-125, -131)
+
+[node name="Sprite" parent="Player" index="1"]
+frame = 4
+frame_progress = 0.946957
+
+[node name="Wall" type="StaticBody2D" parent="."]
+position = Vector2(75, 45)
+collision_mask = 7
+
+[node name="Collider" type="CollisionShape2D" parent="Wall"]
+shape = SubResource("RectangleShape2D_f4pnn")
+
+[node name="Sprite" type="Sprite2D" parent="Wall"]
+scale = Vector2(16, 16)
+texture = SubResource("GradientTexture1D_qey5l")
+
+[node name="Camera" parent="." node_paths=PackedStringArray("Target") instance=ExtResource("3_rpjgp")]
+Target = NodePath("../Player")
+
+[node name="HUD" parent="." instance=ExtResource("4_68e40")]
+
+[node name="GameRunning" parent="HUD" index="0"]
+offset_left = -5.0
+offset_right = -5.0
+
+[node name="ShiteBar" parent="HUD/GameRunning" index="0"]
+offset_left = 207.0
+offset_top = 86.0
+offset_right = 977.0
+offset_bottom = 113.0
+fill_mode = 1
+
+[node name="ShiteBarSprite" type="Sprite2D" parent="HUD/GameRunning" index="1"]
+position = Vector2(680, 203)
+texture = ExtResource("5_7dqlb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HUD/GameRunning" index="2"]
+position = Vector2(1118, 319)
+sprite_frames = SubResource("SpriteFrames_ug8nw")
+
+[node name="UIState" parent="HUD" index="4" node_paths=PackedStringArray("GameState")]
+GameState = NodePath("../..")
+
+[node name="WinArea" type="Area2D" parent="."]
+position = Vector2(-679, -376)
+collision_layer = 2
+collision_mask = 7
+
+[node name="Area" type="CollisionShape2D" parent="WinArea"]
+shape = SubResource("RectangleShape2D_uc1mu")
+
+[node name="Sprite" type="Sprite2D" parent="WinArea"]
+scale = Vector2(4, 64)
+texture = SubResource("GradientTexture1D_54amn")
+
+[connection signal="GameStatusChange" from="." to="Player/PlayerMovement" method="OnGameStatusChanged"]
+[connection signal="GameStatusChange" from="." to="HUD/UIState" method="_GameStatusChanged"]
+[connection signal="body_entered" from="WinArea" to="." method="WinTriggerEntered" unbinds=1]
+
+[editable path="Player"]
+[editable path="HUD"]
