@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://4h70y02rihdn"]
+[gd_scene load_steps=17 format=3 uid="uid://4h70y02rihdn"]
 
 [ext_resource type="Script" path="res://Src/GameState.cs" id="1_m8a1q"]
 [ext_resource type="PackedScene" uid="uid://diplkpmcm4eae" path="res://Scenes/Player.tscn" id="2_1efnd"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://n5wyy2pqwfpw" path="res://Graphics/ShiteBar.png" id="5_7dqlb"]
 [ext_resource type="Texture2D" uid="uid://derip2nlgjqqw" path="res://Graphics/Portraits/stage1.png" id="6_me80q"]
 [ext_resource type="Texture2D" uid="uid://dak71gc588404" path="res://Graphics/Portraits/stage2.png" id="7_5y5a7"]
+[ext_resource type="Texture2D" uid="uid://blyi42bom230x" path="res://Graphics/Portraits/stage3.png" id="8_8cqpi"]
+[ext_resource type="Texture2D" uid="uid://dkfctfem1wtly" path="res://Graphics/Portraits/stage4.png" id="9_evcxt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f4pnn"]
 size = Vector2(256, 16)
@@ -25,6 +27,12 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("7_5y5a7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_8cqpi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_evcxt")
 }],
 "loop": true,
 "name": &"default",
@@ -85,6 +93,7 @@ texture = ExtResource("5_7dqlb")
 [node name="Portrait" type="AnimatedSprite2D" parent="HUD/GameRunning" index="2"]
 position = Vector2(1118, 319)
 sprite_frames = SubResource("SpriteFrames_ug8nw")
+frame = 3
 
 [node name="UIState" parent="HUD" index="4" node_paths=PackedStringArray("GameState")]
 GameState = NodePath("../..")
