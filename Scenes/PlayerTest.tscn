@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://cji4tt4raliwc"]
+[gd_scene load_steps=11 format=3 uid="uid://cji4tt4raliwc"]
 
 [ext_resource type="Script" path="res://Src/GameState.cs" id="1_bhuxi"]
 [ext_resource type="PackedScene" uid="uid://diplkpmcm4eae" path="res://Scenes/Player.tscn" id="1_ek7nf"]
 [ext_resource type="PackedScene" uid="uid://bbum5plvdehjs" path="res://Scenes/Camera.tscn" id="2_vmcqf"]
 [ext_resource type="PackedScene" uid="uid://cg2r4dgtlaq8o" path="res://Scenes/HUD.tscn" id="4_tibww"]
 [ext_resource type="Texture2D" uid="uid://csfnn35dyn50t" path="res://Graphics/toilet.png" id="5_n0oa5"]
+[ext_resource type="PackedScene" uid="uid://dacfibn4jxjde" path="res://Scenes/Enemy.tscn" id="6_2xwuu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f4pnn"]
 size = Vector2(256, 16)
@@ -23,10 +24,6 @@ script = ExtResource("1_bhuxi")
 
 [node name="Player" parent="." instance=ExtResource("1_ek7nf")]
 position = Vector2(-125, -131)
-
-[node name="Sprite" parent="Player" index="1"]
-frame = 4
-frame_progress = 0.946957
 
 [node name="Wall" type="StaticBody2D" parent="."]
 position = Vector2(75, 45)
@@ -62,9 +59,24 @@ shape = SubResource("RectangleShape2D_uc1mu")
 [node name="Sprite" type="Sprite2D" parent="WinArea"]
 texture = ExtResource("5_n0oa5")
 
+[node name="Enemy" parent="." instance=ExtResource("6_2xwuu")]
+position = Vector2(-257, 238)
+
+[node name="EnemyMovement" parent="Enemy" index="3" node_paths=PackedStringArray("Path")]
+Path = NodePath("../../EnemyPath")
+
+[node name="EnemyPath" type="Node" parent="."]
+
+[node name="PathNode1" type="Node2D" parent="EnemyPath"]
+position = Vector2(-202, 407)
+
+[node name="PathNode2" type="Node2D" parent="EnemyPath"]
+position = Vector2(324, 407)
+
 [connection signal="GameStatusChange" from="." to="Player/PlayerMovement" method="OnGameStatusChanged"]
 [connection signal="GameStatusChange" from="." to="HUD/UIState" method="_GameStatusChanged"]
 [connection signal="body_entered" from="WinArea" to="." method="WinTriggerEntered" unbinds=1]
 
 [editable path="Player"]
 [editable path="HUD"]
+[editable path="Enemy"]

@@ -49,17 +49,16 @@ script = ExtResource("1_eqgsy")
 [node name="Collider" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_n688f")
 
-[node name="Sprite" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("CharacterMovement")]
+[node name="PlayerMovement" type="Node" parent="."]
+script = ExtResource("2_v27w2")
+
+[node name="CharacterRotation" type="Node2D" parent="." node_paths=PackedStringArray("CharacterMovement")]
+script = ExtResource("2_nwp0j")
+CharacterMovement = NodePath("..")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="CharacterRotation" node_paths=PackedStringArray("CharacterMovement")]
 sprite_frames = SubResource("SpriteFrames_h25e3")
 animation = &"run"
 frame_progress = 0.984509
 script = ExtResource("8_obaqq")
-CharacterMovement = NodePath("..")
-
-[node name="PlayerMovement" type="Node" parent="."]
-script = ExtResource("2_v27w2")
-
-[node name="CharacterRotation" type="Node" parent="." node_paths=PackedStringArray("CharacterMovement", "Target")]
-script = ExtResource("2_nwp0j")
-CharacterMovement = NodePath("..")
-Target = NodePath("../Sprite")
+CharacterMovement = NodePath("../..")

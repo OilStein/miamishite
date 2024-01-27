@@ -1,12 +1,9 @@
 using Godot;
 
-public partial class CharacterRotation : Node
+public partial class CharacterRotation : Node2D
 {
     [Export]
     public CharacterMovement CharacterMovement;
-	
-    [Export]
-    public Node2D Target;
 
 	public override void _Process(double delta)
 	{
@@ -17,6 +14,6 @@ public partial class CharacterRotation : Node
 		}
 
 		var targetAngle = Vector2.Right.AngleTo(moveDir);
-		Target.Rotation = Mathf.LerpAngle(Target.Rotation, targetAngle, 1f / 4f);
+		Rotation = Mathf.LerpAngle(Rotation, targetAngle, 1f / 4f);
 	}
 }
