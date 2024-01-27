@@ -1,7 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cg2r4dgtlaq8o"]
+[gd_scene load_steps=9 format=3 uid="uid://cg2r4dgtlaq8o"]
 
 [ext_resource type="Texture2D" uid="uid://n5wyy2pqwfpw" path="res://Graphics/ShiteBar.png" id="1_4sj11"]
 [ext_resource type="Script" path="res://Src/UIState.cs" id="1_ah0em"]
+[ext_resource type="Texture2D" uid="uid://b8olufsnvgu0e" path="res://Graphics/ColorSquare/yellow.png" id="1_x3l86"]
+[ext_resource type="Texture2D" uid="uid://mb3u6raqn4ax" path="res://Graphics/ColorSquare/bronsquare.png" id="2_f4yaf"]
+[ext_resource type="Texture2D" uid="uid://derip2nlgjqqw" path="res://Graphics/Portraits/stage1.png" id="4_dwyxq"]
 
 [sub_resource type="Gradient" id="Gradient_h1tn4"]
 offsets = PackedFloat32Array(0)
@@ -24,19 +27,32 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="GameRunning"]
+[node name="ShiteBar" type="TextureProgressBar" parent="GameRunning"]
+layout_mode = 0
+offset_left = 133.0
+offset_top = 69.0
+offset_right = 962.0
+offset_bottom = 122.0
+nine_patch_stretch = true
+texture_under = ExtResource("1_x3l86")
+texture_progress = ExtResource("2_f4yaf")
+metadata/_edit_lock_ = true
+
+[node name="ShitebarBG" type="TextureRect" parent="GameRunning"]
 layout_mode = 0
 offset_right = 1278.0
 offset_bottom = 412.0
 texture = ExtResource("1_4sj11")
 metadata/_edit_lock_ = true
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="GameRunning"]
+[node name="Potrait" type="TextureRect" parent="GameRunning"]
 layout_mode = 0
-offset_left = 133.0
-offset_top = 69.0
-offset_right = 962.0
-offset_bottom = 122.0
+offset_left = 986.0
+offset_top = 3.0
+offset_right = 1278.0
+offset_bottom = 431.0
+texture = ExtResource("4_dwyxq")
+metadata/_edit_lock_ = true
 
 [node name="GameOver" type="Control" parent="."]
 visible = false
@@ -122,4 +138,4 @@ GameRunning = NodePath("../GameRunning")
 GameOver = NodePath("../GameOver")
 GameWon = NodePath("../GameWon")
 GameStarting = NodePath("../GameStarting")
-ShiteProgressBar = NodePath("")
+ShiteProgressBar = NodePath("../GameRunning/ShiteBar")
