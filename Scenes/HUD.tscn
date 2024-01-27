@@ -1,0 +1,46 @@
+[gd_scene load_steps=2 format=3 uid="uid://cg2r4dgtlaq8o"]
+
+[ext_resource type="Script" path="res://Src/UIState.cs" id="1_ah0em"]
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="GameRunning" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ShiteBar" type="ProgressBar" parent="GameRunning"]
+layout_mode = 0
+offset_left = 1031.0
+offset_top = 11.0
+offset_right = 1261.0
+offset_bottom = 39.0
+
+[node name="GameOver" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Cringe" type="Label" parent="GameOver"]
+layout_mode = 0
+offset_left = 609.0
+offset_top = 310.0
+offset_right = 737.0
+offset_bottom = 374.0
+pivot_offset = Vector2(64, 32)
+text = "Cringe"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UIState" type="Node" parent="." node_paths=PackedStringArray("GameRunning", "GameOver", "ShiteProgressBar")]
+script = ExtResource("1_ah0em")
+GameRunning = NodePath("../GameRunning")
+GameOver = NodePath("../GameOver")
+ShiteProgressBar = NodePath("../GameRunning/ShiteBar")

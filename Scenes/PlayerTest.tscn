@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cji4tt4raliwc"]
+[gd_scene load_steps=8 format=3 uid="uid://cji4tt4raliwc"]
 
+[ext_resource type="Script" path="res://Src/GameState.cs" id="1_bhuxi"]
 [ext_resource type="PackedScene" uid="uid://diplkpmcm4eae" path="res://Scenes/Player.tscn" id="1_ek7nf"]
 [ext_resource type="PackedScene" uid="uid://bbum5plvdehjs" path="res://Scenes/Camera.tscn" id="2_vmcqf"]
+[ext_resource type="PackedScene" uid="uid://cg2r4dgtlaq8o" path="res://Scenes/HUD.tscn" id="4_tibww"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f4pnn"]
 size = Vector2(20, 4)
@@ -12,7 +14,8 @@ size = Vector2(20, 4)
 gradient = SubResource("Gradient_i2lwy")
 width = 20
 
-[node name="PlayerTest" type="Node2D"]
+[node name="PlayerTest" type="Node"]
+script = ExtResource("1_bhuxi")
 
 [node name="Player" parent="." instance=ExtResource("1_ek7nf")]
 
@@ -28,3 +31,20 @@ texture = SubResource("GradientTexture1D_qey5l")
 
 [node name="Camera" parent="." node_paths=PackedStringArray("Target") instance=ExtResource("2_vmcqf")]
 Target = NodePath("../Player")
+
+[node name="HUD" parent="." instance=ExtResource("4_tibww")]
+
+[node name="ShiteBar" parent="HUD/GameRunning" index="0"]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 230.0
+offset_bottom = 28.0
+
+[node name="UIState" parent="HUD" index="2" node_paths=PackedStringArray("GameState")]
+GameState = NodePath("../..")
+
+[connection signal="GameStatusChange" from="." to="Player/PlayerMovement" method="OnGameStatusChanged"]
+[connection signal="GameStatusChange" from="." to="HUD/UIState" method="_GameStatusChanged"]
+
+[editable path="Player"]
+[editable path="HUD"]
