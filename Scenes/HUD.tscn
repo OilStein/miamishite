@@ -39,8 +39,29 @@ text = "Cringe"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="UIState" type="Node" parent="." node_paths=PackedStringArray("GameRunning", "GameOver", "ShiteProgressBar")]
+[node name="GameWon" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SweetRelief" type="Label" parent="GameWon"]
+layout_mode = 0
+offset_left = 609.0
+offset_top = 310.0
+offset_right = 737.0
+offset_bottom = 374.0
+pivot_offset = Vector2(64, 32)
+text = "Sweet Relief"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UIState" type="Node" parent="." node_paths=PackedStringArray("GameRunning", "GameOver", "GameWon", "ShiteProgressBar")]
 script = ExtResource("1_ah0em")
 GameRunning = NodePath("../GameRunning")
 GameOver = NodePath("../GameOver")
+GameWon = NodePath("../GameWon")
 ShiteProgressBar = NodePath("../GameRunning/ShiteBar")

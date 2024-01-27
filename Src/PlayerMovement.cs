@@ -25,5 +25,9 @@ public partial class PlayerMovement : Node
     public void OnGameStatusChanged(GameStatus oldStatus, GameStatus newStatus)
     {
         enabled = newStatus == GameStatus.Running;
+        if (!enabled)
+        {
+            characterMovement.MoveDirection = Vector2.Zero;
+        }
     }
 }

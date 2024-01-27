@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cji4tt4raliwc"]
+[gd_scene load_steps=11 format=3 uid="uid://cji4tt4raliwc"]
 
 [ext_resource type="Script" path="res://Src/GameState.cs" id="1_bhuxi"]
 [ext_resource type="PackedScene" uid="uid://diplkpmcm4eae" path="res://Scenes/Player.tscn" id="1_ek7nf"]
@@ -14,13 +14,23 @@ size = Vector2(20, 4)
 gradient = SubResource("Gradient_i2lwy")
 width = 20
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uc1mu"]
+
+[sub_resource type="Gradient" id="Gradient_pviit"]
+offsets = PackedFloat32Array(0, 0.138554)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_54amn"]
+gradient = SubResource("Gradient_pviit")
+width = 20
+
 [node name="PlayerTest" type="Node"]
 script = ExtResource("1_bhuxi")
 
 [node name="Player" parent="." instance=ExtResource("1_ek7nf")]
 
-[node name="Wall" type="CharacterBody2D" parent="."]
+[node name="Wall" type="StaticBody2D" parent="."]
 position = Vector2(75, 45)
+collision_mask = 7
 
 [node name="Collider" type="CollisionShape2D" parent="Wall"]
 shape = SubResource("RectangleShape2D_f4pnn")
@@ -34,17 +44,24 @@ Target = NodePath("../Player")
 
 [node name="HUD" parent="." instance=ExtResource("4_tibww")]
 
-[node name="ShiteBar" parent="HUD/GameRunning" index="0"]
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 230.0
-offset_bottom = 28.0
-
-[node name="UIState" parent="HUD" index="2" node_paths=PackedStringArray("GameState")]
+[node name="UIState" parent="HUD" index="3" node_paths=PackedStringArray("GameState")]
 GameState = NodePath("../..")
+
+[node name="WinArea" type="Area2D" parent="."]
+position = Vector2(-199, -138)
+collision_layer = 2
+collision_mask = 7
+
+[node name="Area" type="CollisionShape2D" parent="WinArea"]
+shape = SubResource("RectangleShape2D_uc1mu")
+
+[node name="Sprite" type="Sprite2D" parent="WinArea"]
+scale = Vector2(1, 4)
+texture = SubResource("GradientTexture1D_54amn")
 
 [connection signal="GameStatusChange" from="." to="Player/PlayerMovement" method="OnGameStatusChanged"]
 [connection signal="GameStatusChange" from="." to="HUD/UIState" method="_GameStatusChanged"]
+[connection signal="body_entered" from="WinArea" to="." method="WinTriggerEntered" unbinds=1]
 
 [editable path="Player"]
 [editable path="HUD"]

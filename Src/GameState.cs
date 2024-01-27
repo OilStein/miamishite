@@ -3,7 +3,7 @@ using Godot;
 public partial class GameState : Node
 {
 	[Signal]
-	public delegate void GameStatusChangeEventHandler(int oldStatus, int newStatus);
+	public delegate void GameStatusChangeEventHandler(GameStatus oldStatus, GameStatus newStatus);
 
 	[Export]
 	public float MaxShite = 100;
@@ -28,9 +28,19 @@ public partial class GameState : Node
 
 		if (shite >= MaxShite)
 		{
-			var currentStatus = gameStatus;
-			gameStatus = GameStatus.GameOver;
-			EmitSignal(SignalName.GameStatusChange, (int)currentStatus, (int)gameStatus);
+			SetGameStatus(GameStatus.GameOver);
 		}
+	}
+
+	public void WinTriggerEntered()
+	{
+		SetGameStatus(GameStatus.Victory);
+	}
+
+	private void SetGameStatus(GameStatus status)
+	{
+		var currentStatus = gameStatus;
+		gameStatus = status;
+		EmitSignal(SignalName.GameStatusChange, (int)currentStatus, (int)gameStatus);
 	}
 }
