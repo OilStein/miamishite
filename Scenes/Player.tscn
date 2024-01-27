@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://diplkpmcm4eae"]
+[gd_scene load_steps=13 format=3 uid="uid://diplkpmcm4eae"]
 
 [ext_resource type="Script" path="res://Src/CharacterMovement.cs" id="1_eqgsy"]
 [ext_resource type="Texture2D" uid="uid://h76tqye6q822" path="res://Graphics/RunningSprite/run_1.png" id="2_4bmhi"]
@@ -9,8 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://cqwv0im58gtry" path="res://Graphics/RunningSprite/run_4.png" id="5_q6wnt"]
 [ext_resource type="Texture2D" uid="uid://dr6fg2xp71xce" path="res://Graphics/RunningSprite/run_5.png" id="6_70dr3"]
 [ext_resource type="Texture2D" uid="uid://861yn2qk84ws" path="res://Graphics/RunningSprite/run_6.png" id="7_0m2dt"]
+[ext_resource type="Script" path="res://Src/CharacterAnimations.cs" id="8_obaqq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n688f"]
+radius = 80.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_h25e3"]
 animations = [{
@@ -47,11 +49,17 @@ script = ExtResource("1_eqgsy")
 [node name="Collider" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_n688f")
 
-[node name="Sprite" type="AnimatedSprite2D" parent="."]
+[node name="Sprite" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("CharacterMovement")]
 sprite_frames = SubResource("SpriteFrames_h25e3")
 animation = &"run"
 frame_progress = 0.984509
-script = ExtResource("2_nwp0j")
+script = ExtResource("8_obaqq")
+CharacterMovement = NodePath("..")
 
 [node name="PlayerMovement" type="Node" parent="."]
 script = ExtResource("2_v27w2")
+
+[node name="CharacterRotation" type="Node" parent="." node_paths=PackedStringArray("CharacterMovement", "Target")]
+script = ExtResource("2_nwp0j")
+CharacterMovement = NodePath("..")
+Target = NodePath("../Sprite")
