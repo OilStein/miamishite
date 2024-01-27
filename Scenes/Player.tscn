@@ -61,12 +61,13 @@ shape = SubResource("CircleShape2D_n688f")
 [node name="PlayerMovement" type="Node" parent="."]
 script = ExtResource("2_v27w2")
 
-[node name="CharacterRotation" type="Node2D" parent="." node_paths=PackedStringArray("CharacterMovement")]
+[node name="CharacterRotation" type="Node2D" parent="."]
 script = ExtResource("2_nwp0j")
-CharacterMovement = NodePath("..")
 
-[node name="Sprite" type="AnimatedSprite2D" parent="CharacterRotation" node_paths=PackedStringArray("CharacterMovement")]
+[node name="Sprite" type="AnimatedSprite2D" parent="CharacterRotation"]
 sprite_frames = SubResource("SpriteFrames_h25e3")
 animation = &"idle"
 script = ExtResource("8_obaqq")
-CharacterMovement = NodePath("../..")
+
+[connection signal="MovementChanged" from="." to="CharacterRotation" method="MoveDirectionChanged"]
+[connection signal="MovementChanged" from="." to="CharacterRotation/Sprite" method="MoveDirectionChanged"]

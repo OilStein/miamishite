@@ -1,10 +1,9 @@
 using System.Collections.Generic;
 using Godot;
 
-public partial class EnemyMovement : Node
+public partial class EnemyMovement : Node2D, CharacterController
 {
-    [Export]
-    public CharacterMovement CharacterMovement;
+    public CharacterMovement.ChangeMoveDirectionCall ChangeMoveDirection { get; set; }
 
     [Export]
     public Node Path;
@@ -39,9 +38,9 @@ public partial class EnemyMovement : Node
 
         var target = pathNodes[targetNodeIndex];
 
-        CharacterMovement.MoveDirection = (target.Position - CharacterMovement.Position).Normalized();
+        ChangeMoveDirection?.Invoke((target.GlobalPosition - GlobalPosition).Normalized());
 
-        if (CharacterMovement.Position.DistanceTo(target.Position) <= 5f)
+        if (GlobalPosition.DistanceTo(target.GlobalPosition) <= 5f)
         {
             targetNodeIndex++;
             if (targetNodeIndex >= pathNodes.Count)

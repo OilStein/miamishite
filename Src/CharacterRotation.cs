@@ -2,12 +2,15 @@ using Godot;
 
 public partial class CharacterRotation : Node2D
 {
-    [Export]
-    public CharacterMovement CharacterMovement;
+	private Vector2 moveDir = Vector2.Zero;
+
+	public void MoveDirectionChanged(Vector2 moveDirection)
+	{
+		moveDir = moveDirection;
+	}
 
 	public override void _Process(double delta)
 	{
-		var moveDir = CharacterMovement.MoveDirection;
 		if (moveDir == Vector2.Zero)
 		{
 			return;

@@ -52,16 +52,14 @@ script = ExtResource("1_rbbsv")
 [node name="Collider" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_n688f")
 
-[node name="CharacterRotation" type="Node2D" parent="." node_paths=PackedStringArray("CharacterMovement")]
+[node name="CharacterRotation" type="Node2D" parent="."]
 script = ExtResource("10_bsex4")
-CharacterMovement = NodePath("..")
 
-[node name="Sprite" type="AnimatedSprite2D" parent="CharacterRotation" node_paths=PackedStringArray("CharacterMovement")]
+[node name="Sprite" type="AnimatedSprite2D" parent="CharacterRotation"]
 sprite_frames = SubResource("SpriteFrames_h25e3")
 animation = &"run"
 frame_progress = 0.984509
 script = ExtResource("8_7to2p")
-CharacterMovement = NodePath("../..")
 
 [node name="DetectionArea" type="Area2D" parent="."]
 collision_layer = 0
@@ -70,6 +68,8 @@ collision_mask = 2
 [node name="Area" type="CollisionShape2D" parent="DetectionArea"]
 shape = SubResource("CircleShape2D_62eyo")
 
-[node name="EnemyMovement" type="Node" parent="." node_paths=PackedStringArray("CharacterMovement")]
+[node name="EnemyMovement" type="Node2D" parent="."]
 script = ExtResource("10_lafbl")
-CharacterMovement = NodePath("..")
+
+[connection signal="MovementChanged" from="." to="CharacterRotation" method="MoveDirectionChanged"]
+[connection signal="MovementChanged" from="." to="CharacterRotation/Sprite" method="MoveDirectionChanged"]

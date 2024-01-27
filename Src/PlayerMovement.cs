@@ -1,15 +1,10 @@
 using Godot;
 
-public partial class PlayerMovement : Node
+public partial class PlayerMovement : Node, CharacterController
 {
-    private CharacterMovement characterMovement;
+    public CharacterMovement.ChangeMoveDirectionCall ChangeMoveDirection { get; set; }
 
     private bool enabled = true;
-
-    public override void _Ready()
-    {
-        characterMovement = GetParent<CharacterMovement>();
-    }
 
     public override void _Process(double delta)
     {
@@ -19,7 +14,7 @@ public partial class PlayerMovement : Node
         }
 
         Vector2 direction = Input.GetVector("move_left", "move_right", "move_up", "move_down");
-        characterMovement.MoveDirection = direction;
+        ChangeMoveDirection?.Invoke(direction);
     }
 
     public void OnGameStatusChanged(GameStatus oldStatus, GameStatus newStatus)
@@ -27,7 +22,7 @@ public partial class PlayerMovement : Node
         enabled = newStatus == GameStatus.Running;
         if (!enabled)
         {
-            characterMovement.MoveDirection = Vector2.Zero;
+            ChangeMoveDirection?.Invoke(Vector2.Zero);
         }
     }
 }
