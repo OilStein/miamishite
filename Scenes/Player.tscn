@@ -1,16 +1,42 @@
-[gd_scene load_steps=7 format=3 uid="uid://diplkpmcm4eae"]
+[gd_scene load_steps=12 format=3 uid="uid://diplkpmcm4eae"]
 
 [ext_resource type="Script" path="res://Src/CharacterMovement.cs" id="1_eqgsy"]
+[ext_resource type="Texture2D" uid="uid://h76tqye6q822" path="res://Graphics/RunningSprite/run_1.png" id="2_4bmhi"]
 [ext_resource type="Script" path="res://Src/CharacterRotation.cs" id="2_nwp0j"]
 [ext_resource type="Script" path="res://Src/PlayerMovement.cs" id="2_v27w2"]
+[ext_resource type="Texture2D" uid="uid://bwda03r2vxsty" path="res://Graphics/RunningSprite/run_2.png" id="3_spqur"]
+[ext_resource type="Texture2D" uid="uid://7xr0ol3e2wj5" path="res://Graphics/RunningSprite/run_3.png" id="4_rkn4s"]
+[ext_resource type="Texture2D" uid="uid://cqwv0im58gtry" path="res://Graphics/RunningSprite/run_4.png" id="5_q6wnt"]
+[ext_resource type="Texture2D" uid="uid://dr6fg2xp71xce" path="res://Graphics/RunningSprite/run_5.png" id="6_70dr3"]
+[ext_resource type="Texture2D" uid="uid://861yn2qk84ws" path="res://Graphics/RunningSprite/run_6.png" id="7_0m2dt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n688f"]
 
-[sub_resource type="Gradient" id="Gradient_i2lwy"]
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_qey5l"]
-gradient = SubResource("Gradient_i2lwy")
-width = 20
+[sub_resource type="SpriteFrames" id="SpriteFrames_h25e3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_4bmhi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_spqur")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_rkn4s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_q6wnt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_70dr3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_0m2dt")
+}],
+"loop": true,
+"name": &"run",
+"speed": 12.0
+}]
 
 [node name="Player" type="CharacterBody2D"]
 motion_mode = 1
@@ -19,9 +45,10 @@ script = ExtResource("1_eqgsy")
 [node name="Collider" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_n688f")
 
-[node name="Sprite" type="Sprite2D" parent="."]
-scale = Vector2(1, 4)
-texture = SubResource("GradientTexture1D_qey5l")
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_h25e3")
+animation = &"run"
+frame_progress = 0.984509
 script = ExtResource("2_nwp0j")
 
 [node name="PlayerMovement" type="Node" parent="."]
