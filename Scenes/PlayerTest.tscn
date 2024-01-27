@@ -54,7 +54,7 @@ Target = NodePath("../Player")
 offset_left = -5.0
 offset_right = -5.0
 
-[node name="UIState" parent="HUD" index="3" node_paths=PackedStringArray("GameState")]
+[node name="UIState" parent="HUD" index="4" node_paths=PackedStringArray("GameState")]
 GameState = NodePath("../..")
 
 [node name="WinArea" type="Area2D" parent="."]

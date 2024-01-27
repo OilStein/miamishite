@@ -11,6 +11,8 @@ public partial class UIState : Node
     public Control GameOver;
     [Export]
     public Control GameWon;
+    [Export]
+    public Control GameStarting;
 
     [Export]
     public ProgressBar ShiteProgressBar;
@@ -30,5 +32,6 @@ public partial class UIState : Node
         GameRunning.Visible = newStatus == GameStatus.Running;
         GameOver.Visible = newStatus == GameStatus.GameOver;
         GameWon.Visible = newStatus == GameStatus.Victory;
+        GameStarting.Visible = newStatus == GameStatus.Starting;
     }
 }
