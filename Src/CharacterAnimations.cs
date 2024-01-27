@@ -6,7 +6,7 @@ public partial class CharacterAnimations : AnimatedSprite2D
     {
         if (moveDirection == Vector2.Zero)
         {
-            Play("run");
+            Play("idle");
         }
         else
         {
