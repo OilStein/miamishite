@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dq8w2yow07tsr"]
+
+[ext_resource type="Script" path="res://Src/GodScene.cs" id="1_jbsoy"]
+[ext_resource type="PackedScene" uid="uid://6pjbexjuufqv" path="res://Scenes/Main.tscn" id="1_l4d2x"]
+
+[node name="GodScene" type="Node"]
+script = ExtResource("1_jbsoy")
+Main = ExtResource("1_l4d2x")
