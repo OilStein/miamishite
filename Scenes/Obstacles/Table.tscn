@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://bc40v8akcmwpa"]
+
+[ext_resource type="Texture2D" uid="uid://brfnmmylsot37" path="res://Graphics/Obstacles/plant.png" id="1_fvcwy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xrjax"]
+size = Vector2(35, 25)
+
+[node name="Chair" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_fvcwy")
+metadata/_edit_lock_ = true
+
+[node name="RigidBody2D" type="RigidBody2D" parent="Sprite2D"]
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/RigidBody2D"]
+position = Vector2(2.5, 21.5)
+shape = SubResource("RectangleShape2D_xrjax")
+metadata/_edit_lock_ = true
