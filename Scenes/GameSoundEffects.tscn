@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://Src/GameSoundEffects.cs" id="1_4ig2t"]
 [ext_resource type="AudioStream" uid="uid://mekn232xdakm" path="res://SFX/toilet-flush-4.mp3" id="2_gwtnp"]
-[ext_resource type="AudioStream" uid="uid://blx60ru8hivx8" path="res://SFX/sfx_fart_03.ogg" id="2_pmvv6"]
+[ext_resource type="AudioStream" uid="uid://bxapesdvhif50" path="res://SFX/LoseFart.wav" id="3_j2oya"]
 
 [node name="GameSoundEffects" type="AudioStreamPlayer"]
 script = ExtResource("1_4ig2t")
 VictorySound = ExtResource("2_gwtnp")
-FailureSound = ExtResource("2_pmvv6")
+FailureSound = ExtResource("3_j2oya")
