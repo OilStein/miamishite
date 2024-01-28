@@ -6,6 +6,9 @@ public partial class GameState : Node
     [Signal]
     public delegate void GameStatusChangeEventHandler(GameStatus oldStatus, GameStatus newStatus);
 
+    [Signal]
+    public delegate void FartedEventHandler();
+
     [Export]
     public float MaxShite = 100;
 
@@ -63,4 +66,23 @@ public partial class GameState : Node
         gameStatus = status;
         EmitSignal(SignalName.GameStatusChange, (int)currentStatus, (int)gameStatus);
     }
+
+	private void Farted()
+	{
+		var rand = new System.Random();
+		var didAddOrRemoveShite = rand.Next(0, 4);
+		if (didAddOrRemoveShite < 3)
+		{
+			shite -= rand.Next(1, 10);
+		}
+		else
+		{
+			shite += rand.Next(1, 10);
+		}
+		if (shite < 0)
+		{
+			shite = 0;
+		}
+        EmitSignal(SignalName.Farted);
+	}
 }
