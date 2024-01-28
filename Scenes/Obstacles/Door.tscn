@@ -1,9 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://d2hhu542rvu4f"]
+[gd_scene load_steps=5 format=3 uid="uid://d2hhu542rvu4f"]
 
 [ext_resource type="Texture2D" uid="uid://da6rh55qbwq00" path="res://Graphics/Obstacles/door.png" id="1_3ugex"]
+[ext_resource type="AudioStream" uid="uid://wtx3p44kqqi0" path="res://SFX/door_bang.mp3" id="2_itqpk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xrjax"]
 size = Vector2(106, 17)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jlcar"]
+radius = 52.0384
 
 [node name="Chair" type="Node2D"]
 
@@ -17,3 +21,14 @@ metadata/_edit_lock_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/RigidBody2D"]
 position = Vector2(-2, -7.5)
 shape = SubResource("RectangleShape2D_xrjax")
+
+[node name="KnockArea" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KnockArea"]
+shape = SubResource("CircleShape2D_jlcar")
+
+[node name="KnockSound" type="AudioStreamPlayer2D" parent="KnockArea"]
+stream = ExtResource("2_itqpk")
+
+[connection signal="body_entered" from="KnockArea" to="KnockArea/KnockSound" method="play" unbinds=1]
