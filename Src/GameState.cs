@@ -71,13 +71,13 @@ public partial class GameState : Node
 	{
 		var rand = new System.Random();
 		var didAddOrRemoveShite = rand.Next(0, 4);
-		if (didAddOrRemoveShite < 3)
+		if (didAddOrRemoveShite < 1)
 		{
-			shite -= rand.Next(1, 10);
+			shite -= rand.Next(1, 20) + 10;
 		}
 		else
 		{
-			shite += rand.Next(1, 10);
+			shite += rand.Next(1, 20) + 10;
 		}
 		if (shite < 0)
 		{

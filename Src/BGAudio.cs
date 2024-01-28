@@ -3,6 +3,7 @@ using System;
 
 public partial class BGAudio : Node
 {
+	
 	private AudioStreamPlayer backgroundMusic;
 	private AudioStreamPlayer officeAmbience;
 	// Called when the node enters the scene tree for the first time.
@@ -19,6 +20,11 @@ public partial class BGAudio : Node
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+	}
+	
+	public void GameStateChanged(GameStatus oldState, GameStatus newState)
+	{
+		PlayTrack(newState != GameStatus.Running);
 	}
 
 	public void PlayTrack(bool play)
