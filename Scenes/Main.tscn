@@ -1,31 +1,19 @@
-[gd_scene load_steps=12 format=3 uid="uid://6pjbexjuufqv"]
+[gd_scene load_steps=10 format=3 uid="uid://6pjbexjuufqv"]
 
 [ext_resource type="PackedScene" uid="uid://c2calhtr3rook" path="res://Scenes/Maps/Map2.tscn" id="1_5icwl"]
 [ext_resource type="Script" path="res://Src/GameState.cs" id="1_iuvoq"]
 [ext_resource type="PackedScene" uid="uid://cg2r4dgtlaq8o" path="res://Scenes/HUD.tscn" id="2_7mxu7"]
 [ext_resource type="PackedScene" uid="uid://diplkpmcm4eae" path="res://Scenes/Player.tscn" id="3_hv5ji"]
-[ext_resource type="PackedScene" uid="uid://c5kp3capv0l37" path="res://Scenes/Obstacles/Desk.tscn" id="3_unttr"]
 [ext_resource type="PackedScene" path="res://Scenes/WinArea.tscn" id="5_pre4u"]
 [ext_resource type="PackedScene" uid="uid://b7vyupqwbknxk" path="res://Scenes/BGMusic.tscn" id="6_s214c"]
 [ext_resource type="PackedScene" uid="uid://bbum5plvdehjs" path="res://Scenes/Camera.tscn" id="7_cpcji"]
 [ext_resource type="PackedScene" uid="uid://cgf4llcpgalth" path="res://Scenes/GameSoundEffects.tscn" id="8_6aecs"]
 [ext_resource type="PackedScene" uid="uid://irav7vq2q52f" path="res://Scenes/FartSFX.tscn" id="9_yjeme"]
-[ext_resource type="PackedScene" uid="uid://d2hhu542rvu4f" path="res://Scenes/Obstacles/Door.tscn" id="11_xlt2t"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_iuvoq")
 
 [node name="Map2" parent="." instance=ExtResource("1_5icwl")]
-
-[node name="Desk" parent="Map2" instance=ExtResource("3_unttr")]
-position = Vector2(-1807, -911)
-
-[node name="Desk2" parent="Map2" instance=ExtResource("3_unttr")]
-position = Vector2(-1219, -921)
-
-[node name="Desk3" parent="Map2" instance=ExtResource("3_unttr")]
-position = Vector2(-1856, -679)
-rotation = -1.5708
 
 [node name="HUD" parent="." instance=ExtResource("2_7mxu7")]
 
@@ -53,15 +41,6 @@ Target = NodePath("../Player")
 [node name="GameSoundEffects" parent="." instance=ExtResource("8_6aecs")]
 
 [node name="FartSfx" parent="." instance=ExtResource("9_yjeme")]
-
-[node name="Chair" parent="." instance=ExtResource("11_xlt2t")]
-position = Vector2(-1721, -1288)
-
-[node name="Chair2" parent="." instance=ExtResource("11_xlt2t")]
-position = Vector2(1194, -356)
-
-[node name="Chair3" parent="." instance=ExtResource("11_xlt2t")]
-position = Vector2(1195, -1396)
 
 [connection signal="Farted" from="." to="FartSfx/AudioStreamPlayer" method="PlayFart"]
 [connection signal="GameStatusChange" from="." to="HUD/UIState" method="_GameStatusChanged"]

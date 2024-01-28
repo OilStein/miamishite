@@ -11,7 +11,8 @@ size = Vector2(164, 88)
 texture = ExtResource("1_r5ywd")
 metadata/_edit_lock_ = true
 
-[node name="RigidBody2D" type="RigidBody2D" parent="Sprite2D"]
+[node name="RigidBody2D" type="StaticBody2D" parent="Sprite2D"]
+collision_mask = 7
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/RigidBody2D"]
