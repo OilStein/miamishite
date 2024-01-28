@@ -87,7 +87,7 @@ script = ExtResource("2_nwp0j")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="CharacterRotation"]
 sprite_frames = SubResource("SpriteFrames_h25e3")
-animation = &"death"
+animation = &"idle"
 script = ExtResource("8_obaqq")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
@@ -95,3 +95,7 @@ script = ExtResource("12_psccd")
 RightFootstep = ExtResource("13_n2nt4")
 LeftFootstep = ExtResource("14_635sf")
 Interval = 0.5
+
+[connection signal="MovementChanged" from="." to="CharacterRotation" method="MoveDirectionChanged"]
+[connection signal="MovementChanged" from="." to="CharacterRotation/Sprite" method="MoveDirectionChanged"]
+[connection signal="MovementChanged" from="." to="AudioStreamPlayer" method="MoveDirectionChanged"]
