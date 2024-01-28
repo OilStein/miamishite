@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cg2r4dgtlaq8o"]
+[gd_scene load_steps=10 format=3 uid="uid://cg2r4dgtlaq8o"]
 
 [ext_resource type="Texture2D" uid="uid://n5wyy2pqwfpw" path="res://Graphics/ShiteBar.png" id="1_4sj11"]
 [ext_resource type="Script" path="res://Src/UIState.cs" id="1_ah0em"]
@@ -16,6 +16,9 @@ gradient = SubResource("Gradient_h1tn4")
 [sub_resource type="LabelSettings" id="LabelSettings_e0k3j"]
 font_size = 32
 font_color = Color(1, 0.207843, 0.196078, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_2k1n4"]
+font_size = 32
 
 [node name="HUD" type="CanvasLayer"]
 
@@ -101,16 +104,42 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SweetRelief" type="Label" parent="GameWon"]
+[node name="Background" type="TextureRect" parent="GameWon"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.485
+anchor_right = 1.0
+anchor_bottom = 0.485
+offset_top = -186.2
+offset_bottom = -78.2
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_bpehp")
+
+[node name="SweetRelief" type="Label" parent="GameWon/Background"]
 layout_mode = 0
-offset_left = 609.0
-offset_top = 310.0
-offset_right = 737.0
-offset_bottom = 374.0
+offset_left = 429.0
+offset_top = 20.0
+offset_right = 891.0
+offset_bottom = 84.0
 pivot_offset = Vector2(64, 32)
-text = "Sweet Relief"
+text = "Whew! Sweet Relief!"
+label_settings = SubResource("LabelSettings_2k1n4")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Potrait" type="TextureRect" parent="GameWon"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.004
+anchor_right = 1.0
+anchor_bottom = 0.004
+offset_left = -294.0
+offset_top = 0.12
+offset_right = -2.0
+offset_bottom = 428.12
+texture = ExtResource("4_dwyxq")
 
 [node name="GameStarting" type="Control" parent="."]
 visible = false
@@ -121,16 +150,37 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="OhShit" type="Label" parent="GameStarting"]
+[node name="Background" type="TextureRect" parent="GameStarting"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.485
+anchor_right = 1.0
+anchor_bottom = 0.485
+offset_top = -186.2
+offset_bottom = -78.2
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_bpehp")
+
+[node name="OhShit" type="Label" parent="GameStarting/Background"]
 layout_mode = 0
-offset_left = 609.0
-offset_top = 310.0
-offset_right = 737.0
-offset_bottom = 374.0
+offset_left = 429.0
+offset_top = 20.0
+offset_right = 891.0
+offset_bottom = 84.0
 pivot_offset = Vector2(64, 32)
-text = "Shit I need to shit"
+text = "Oh no... I need the toilet! Fast!"
+label_settings = SubResource("LabelSettings_2k1n4")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Potrait" type="TextureRect" parent="GameStarting"]
+layout_mode = 0
+offset_left = 986.0
+offset_top = 3.0
+offset_right = 1278.0
+offset_bottom = 431.0
+texture = ExtResource("4_dwyxq")
 
 [node name="UIState" type="Node" parent="." node_paths=PackedStringArray("GameRunning", "GameOver", "GameWon", "GameStarting", "ShiteProgressBar")]
 script = ExtResource("1_ah0em")
