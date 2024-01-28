@@ -3,6 +3,8 @@ using Godot;
 public partial class GameSoundEffects : AudioStreamPlayer
 {
 	[Export]
+	public AudioStream VictorySound;
+	[Export]
 	public AudioStream FailureSound;
 
 	public void GameStatusChanged(GameStatus oldStatus, GameStatus newStatus)
@@ -20,6 +22,8 @@ public partial class GameSoundEffects : AudioStreamPlayer
 	{
 		switch (status)
 		{
+			case GameStatus.Victory:
+				return VictorySound;
 			case GameStatus.GameOver:
 				return FailureSound;
 			default:

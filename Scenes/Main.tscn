@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://6pjbexjuufqv"]
+[gd_scene load_steps=9 format=3 uid="uid://6pjbexjuufqv"]
 
 [ext_resource type="PackedScene" uid="uid://c2calhtr3rook" path="res://Scenes/Maps/Map2.tscn" id="1_5icwl"]
 [ext_resource type="Script" path="res://Src/GameState.cs" id="1_iuvoq"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://rc4s62pm3efl" path="res://Scenes/WinArea.tscn" id="5_pre4u"]
 [ext_resource type="PackedScene" uid="uid://b7vyupqwbknxk" path="res://Scenes/BGMusic.tscn" id="6_s214c"]
 [ext_resource type="PackedScene" uid="uid://bbum5plvdehjs" path="res://Scenes/Camera.tscn" id="7_cpcji"]
+[ext_resource type="PackedScene" uid="uid://cgf4llcpgalth" path="res://Scenes/GameSoundEffects.tscn" id="8_6aecs"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_iuvoq")
@@ -36,9 +37,12 @@ rotation = 1.57079
 [node name="Camera" parent="." node_paths=PackedStringArray("Target") instance=ExtResource("7_cpcji")]
 Target = NodePath("../Player")
 
+[node name="GameSoundEffects" parent="." instance=ExtResource("8_6aecs")]
+
 [connection signal="GameStatusChange" from="." to="HUD/UIState" method="_GameStatusChanged"]
 [connection signal="GameStatusChange" from="." to="Player/PlayerMovement" method="OnGameStatusChanged"]
 [connection signal="GameStatusChange" from="." to="Player/CharacterRotation/Sprite" method="GameStatusChanged"]
+[connection signal="GameStatusChange" from="." to="GameSoundEffects" method="GameStatusChanged"]
 [connection signal="body_entered" from="WinArea1" to="." method="WinTriggerEntered" unbinds=1]
 [connection signal="body_entered" from="WinArea2" to="." method="WinTriggerEntered" unbinds=1]
 [connection signal="body_entered" from="WinArea3" to="." method="WinTriggerEntered" unbinds=1]
