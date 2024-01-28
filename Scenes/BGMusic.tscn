@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://c01iemb7i5bvo"]
+
+[ext_resource type="AudioStream" uid="uid://cbbdnum660ie4" path="res://SFX/neon-city-bright-vision.mp3" id="1_ohr5u"]
+
+[node name="BgMusic" type="Node"]
+
+[node name="BGMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_ohr5u")
+
+[node name="BGAmbience" type="AudioStreamPlayer" parent="."]
