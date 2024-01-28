@@ -1,10 +1,32 @@
-[gd_scene load_steps=10 format=3 uid="uid://cg2r4dgtlaq8o"]
+[gd_scene load_steps=12 format=3 uid="uid://cg2r4dgtlaq8o"]
 
 [ext_resource type="Texture2D" uid="uid://n5wyy2pqwfpw" path="res://Graphics/ShiteBar.png" id="1_4sj11"]
 [ext_resource type="Script" path="res://Src/UIState.cs" id="1_ah0em"]
 [ext_resource type="Texture2D" uid="uid://b8olufsnvgu0e" path="res://Graphics/ColorSquare/yellow.png" id="1_x3l86"]
 [ext_resource type="Texture2D" uid="uid://mb3u6raqn4ax" path="res://Graphics/ColorSquare/bronsquare.png" id="2_f4yaf"]
 [ext_resource type="Texture2D" uid="uid://derip2nlgjqqw" path="res://Graphics/Portraits/stage1.png" id="4_dwyxq"]
+
+[sub_resource type="Animation" id="Animation_m4us4"]
+resource_name = "portrait_wave"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Potrait:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [0.0872665, -0.0872665, 0.0872665]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fvmn1"]
+_data = {
+"portrait_wave": SubResource("Animation_m4us4")
+}
 
 [sub_resource type="Gradient" id="Gradient_h1tn4"]
 offsets = PackedFloat32Array(0)
@@ -54,7 +76,16 @@ offset_left = 986.0
 offset_top = 3.0
 offset_right = 1278.0
 offset_bottom = 431.0
+rotation = -0.0558506
+pivot_offset = Vector2(146, 214)
 texture = ExtResource("4_dwyxq")
+metadata/_edit_lock_ = true
+
+[node name="PortraitAnimation" type="AnimationPlayer" parent="GameRunning"]
+libraries = {
+"": SubResource("AnimationLibrary_fvmn1")
+}
+autoplay = "portrait_wave"
 metadata/_edit_lock_ = true
 
 [node name="GameOver" type="Control" parent="."]
