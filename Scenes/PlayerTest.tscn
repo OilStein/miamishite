@@ -71,9 +71,11 @@ FailureSound = ExtResource("8_2fips")
 [node name="BgMusic" parent="." instance=ExtResource("9_jvc4s")]
 
 [connection signal="GameStatusChange" from="." to="Player/PlayerMovement" method="OnGameStatusChanged"]
+[connection signal="GameStatusChange" from="." to="Player/CharacterRotation/Sprite" method="GameStatusChanged"]
 [connection signal="GameStatusChange" from="." to="HUD/UIState" method="_GameStatusChanged"]
 [connection signal="GameStatusChange" from="." to="GameSoundEffects" method="GameStatusChanged"]
 [connection signal="body_entered" from="WinArea" to="." method="WinTriggerEntered" unbinds=1]
 
+[editable path="Player"]
 [editable path="HUD"]
 [editable path="Enemy"]

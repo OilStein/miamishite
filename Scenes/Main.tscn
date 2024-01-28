@@ -1,3 +1,47 @@
-[gd_scene format=3 uid="uid://6pjbexjuufqv"]
+[gd_scene load_steps=8 format=3 uid="uid://6pjbexjuufqv"]
+
+[ext_resource type="PackedScene" uid="uid://c2calhtr3rook" path="res://Scenes/Maps/Map2.tscn" id="1_5icwl"]
+[ext_resource type="Script" path="res://Src/GameState.cs" id="1_iuvoq"]
+[ext_resource type="PackedScene" uid="uid://cg2r4dgtlaq8o" path="res://Scenes/HUD.tscn" id="2_7mxu7"]
+[ext_resource type="PackedScene" uid="uid://diplkpmcm4eae" path="res://Scenes/Player.tscn" id="3_hv5ji"]
+[ext_resource type="PackedScene" uid="uid://rc4s62pm3efl" path="res://Scenes/WinArea.tscn" id="5_pre4u"]
+[ext_resource type="PackedScene" uid="uid://b7vyupqwbknxk" path="res://Scenes/BGMusic.tscn" id="6_s214c"]
+[ext_resource type="PackedScene" uid="uid://bbum5plvdehjs" path="res://Scenes/Camera.tscn" id="7_cpcji"]
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_iuvoq")
+
+[node name="Map2" parent="." instance=ExtResource("1_5icwl")]
+
+[node name="HUD" parent="." instance=ExtResource("2_7mxu7")]
+
+[node name="UIState" parent="HUD" index="4" node_paths=PackedStringArray("GameState")]
+GameState = NodePath("../..")
+
+[node name="Player" parent="." instance=ExtResource("3_hv5ji")]
+position = Vector2(-1212, -470)
+
+[node name="WinArea1" parent="." instance=ExtResource("5_pre4u")]
+position = Vector2(-1715, -1521)
+
+[node name="WinArea2" parent="." instance=ExtResource("5_pre4u")]
+position = Vector2(1194, -477)
+
+[node name="WinArea3" parent="." instance=ExtResource("5_pre4u")]
+position = Vector2(783, -2447)
+rotation = 1.57079
+
+[node name="BgMusic" parent="." instance=ExtResource("6_s214c")]
+
+[node name="Camera" parent="." node_paths=PackedStringArray("Target") instance=ExtResource("7_cpcji")]
+Target = NodePath("../Player")
+
+[connection signal="GameStatusChange" from="." to="HUD/UIState" method="_GameStatusChanged"]
+[connection signal="GameStatusChange" from="." to="Player/PlayerMovement" method="OnGameStatusChanged"]
+[connection signal="GameStatusChange" from="." to="Player/CharacterRotation/Sprite" method="GameStatusChanged"]
+[connection signal="body_entered" from="WinArea1" to="." method="WinTriggerEntered" unbinds=1]
+[connection signal="body_entered" from="WinArea2" to="." method="WinTriggerEntered" unbinds=1]
+[connection signal="body_entered" from="WinArea3" to="." method="WinTriggerEntered" unbinds=1]
+
+[editable path="HUD"]
+[editable path="Player"]

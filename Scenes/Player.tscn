@@ -18,7 +18,7 @@
 [ext_resource type="AudioStream" uid="uid://dpmrxtgcko1p2" path="res://SFX/footstep_floor_2.ogg" id="14_635sf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n688f"]
-radius = 80.0
+radius = 55.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_h25e3"]
 animations = [{
@@ -87,7 +87,7 @@ script = ExtResource("2_nwp0j")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="CharacterRotation"]
 sprite_frames = SubResource("SpriteFrames_h25e3")
-animation = &"idle"
+animation = &"death"
 script = ExtResource("8_obaqq")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
