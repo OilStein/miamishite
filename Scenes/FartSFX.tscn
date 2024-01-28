@@ -1,0 +1,13 @@
+[gd_scene load_steps=6 format=3 uid="uid://djkl2ml33mavk"]
+
+[ext_resource type="Script" path="res://Src/Fart.cs" id="1_fk6ro"]
+[ext_resource type="AudioStream" uid="uid://du2x3s2b48nfj" path="res://SFX/huge-fart.mp3" id="2_u5mjx"]
+[ext_resource type="AudioStream" uid="uid://bpsr2h04maf25" path="res://SFX/sfx_fart_01.ogg" id="3_xra67"]
+[ext_resource type="AudioStream" uid="uid://b6m1lrxden5kb" path="res://SFX/sfx_fart_02.ogg" id="4_8e4nm"]
+[ext_resource type="AudioStream" uid="uid://blx60ru8hivx8" path="res://SFX/sfx_fart_03.ogg" id="5_5jf5w"]
+
+[node name="FartSfx" type="Node"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+script = ExtResource("1_fk6ro")
+fartSounds = Array[AudioStream]([ExtResource("2_u5mjx"), ExtResource("3_xra67"), ExtResource("4_8e4nm"), ExtResource("5_5jf5w")])
