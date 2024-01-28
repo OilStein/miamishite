@@ -1,12 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://b7vyupqwbknxk"]
+[gd_scene load_steps=4 format=3 uid="uid://b7vyupqwbknxk"]
 
+[ext_resource type="Script" path="res://Src/BGAudio.cs" id="1_aprdh"]
 [ext_resource type="AudioStream" uid="uid://cbbdnum660ie4" path="res://SFX/neon-city-bright-vision.mp3" id="1_ohr5u"]
+[ext_resource type="AudioStream" uid="uid://0bbyg2xnqac" path="res://SFX/office_ambient.ogg" id="3_4op4o"]
 
 [node name="BgMusic" type="Node"]
+script = ExtResource("1_aprdh")
 
-[node name="BGMusic" type="AudioStreamPlayer" parent="."]
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_ohr5u")
 volume_db = -12.181
 autoplay = true
 
-[node name="BGAmbience" type="AudioStreamPlayer" parent="."]
+[node name="OfficeAmbience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_4op4o")

@@ -24,7 +24,7 @@ public partial class BGAudio : Node
 	
 	public void GameStateChanged(GameStatus oldState, GameStatus newState)
 	{
-		PlayTrack(newState != GameStatus.Running);
+		PlayTrack(newState == GameStatus.Running);
 	}
 
 	public void PlayTrack(bool play)

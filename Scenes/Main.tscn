@@ -46,6 +46,7 @@ Target = NodePath("../Player")
 [connection signal="GameStatusChange" from="." to="HUD/UIState" method="_GameStatusChanged"]
 [connection signal="GameStatusChange" from="." to="Player/PlayerMovement" method="OnGameStatusChanged"]
 [connection signal="GameStatusChange" from="." to="Player/CharacterRotation/Sprite" method="GameStatusChanged"]
+[connection signal="GameStatusChange" from="." to="BgMusic" method="GameStateChanged"]
 [connection signal="GameStatusChange" from="." to="GameSoundEffects" method="GameStatusChanged"]
 [connection signal="FartedKeyPressed" from="Player/PlayerMovement" to="." method="Fart"]
 [connection signal="body_entered" from="WinArea1" to="." method="WinTriggerEntered" unbinds=1]
@@ -54,4 +55,5 @@ Target = NodePath("../Player")
 
 [editable path="HUD"]
 [editable path="Player"]
+[editable path="BgMusic"]
 [editable path="FartSfx"]
