@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://blyi42bom230x" path="res://Graphics/Portraits/stage3.png" id="7_i6jeu"]
 [ext_resource type="Texture2D" uid="uid://dkfctfem1wtly" path="res://Graphics/Portraits/stage4.png" id="8_0bopy"]
 [ext_resource type="Texture2D" uid="uid://cpxvnio4xljpe" path="res://Graphics/endscreen.png" id="9_a8e8j"]
+[ext_resource type="Texture2D" uid="uid://1hsaap24e64o" path="res://Graphics/cringedeath.png" id="9_dkadx"]
 
 [sub_resource type="Animation" id="Animation_m4us4"]
 resource_name = "portrait_wave"
@@ -39,10 +40,6 @@ colors = PackedColorArray(0, 0, 0, 0.501961)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_bpehp"]
 gradient = SubResource("Gradient_h1tn4")
-
-[sub_resource type="LabelSettings" id="LabelSettings_e0k3j"]
-font_size = 32
-font_color = Color(1, 0.207843, 0.196078, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_2k1n4"]
 font_size = 32
@@ -97,7 +94,6 @@ autoplay = "portrait_wave"
 metadata/_edit_lock_ = true
 
 [node name="GameOver" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -111,28 +107,24 @@ anchors_preset = -1
 anchor_top = 0.485
 anchor_right = 1.0
 anchor_bottom = 0.485
-offset_top = -52.2
-offset_bottom = 55.8
+offset_top = 81.8
+offset_bottom = 367.8
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture1D_bpehp")
 
-[node name="Cringe" type="Label" parent="GameOver/Background"]
+[node name="Potrait" type="TextureRect" parent="GameOver/Background"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.526
-anchor_top = 0.475
-anchor_right = 0.526
-anchor_bottom = 0.475
-offset_left = -137.28
-offset_top = -51.3
-offset_right = 136.72
-offset_bottom = 56.7
-pivot_offset = Vector2(64, 32)
-text = "Cringe"
-label_settings = SubResource("LabelSettings_e0k3j")
-horizontal_alignment = 1
-vertical_alignment = 1
+anchor_left = 0.527
+anchor_top = 0.5
+anchor_right = 0.527
+anchor_bottom = 0.5
+offset_left = -364.56
+offset_top = -104.0
+offset_right = 363.44
+offset_bottom = 136.0
+texture = ExtResource("9_dkadx")
 
 [node name="GameWon" type="Control" parent="."]
 visible = false
