@@ -1,10 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://cg2r4dgtlaq8o"]
+[gd_scene load_steps=16 format=3 uid="uid://cg2r4dgtlaq8o"]
 
 [ext_resource type="Texture2D" uid="uid://n5wyy2pqwfpw" path="res://Graphics/ShiteBar.png" id="1_4sj11"]
 [ext_resource type="Script" path="res://Src/UIState.cs" id="1_ah0em"]
 [ext_resource type="Texture2D" uid="uid://b8olufsnvgu0e" path="res://Graphics/ColorSquare/yellow.png" id="1_x3l86"]
 [ext_resource type="Texture2D" uid="uid://mb3u6raqn4ax" path="res://Graphics/ColorSquare/bronsquare.png" id="2_f4yaf"]
 [ext_resource type="Texture2D" uid="uid://derip2nlgjqqw" path="res://Graphics/Portraits/stage1.png" id="4_dwyxq"]
+[ext_resource type="Script" path="res://Src/UIPortraitSwitcher.cs" id="5_u7jhi"]
+[ext_resource type="Texture2D" uid="uid://dak71gc588404" path="res://Graphics/Portraits/stage2.png" id="6_hptxp"]
+[ext_resource type="Texture2D" uid="uid://blyi42bom230x" path="res://Graphics/Portraits/stage3.png" id="7_i6jeu"]
+[ext_resource type="Texture2D" uid="uid://dkfctfem1wtly" path="res://Graphics/Portraits/stage4.png" id="8_0bopy"]
 
 [sub_resource type="Animation" id="Animation_m4us4"]
 resource_name = "portrait_wave"
@@ -79,6 +83,9 @@ offset_bottom = 431.0
 rotation = -0.0558506
 pivot_offset = Vector2(146, 214)
 texture = ExtResource("4_dwyxq")
+script = ExtResource("5_u7jhi")
+Thresholds = PackedFloat32Array(0, 25, 50, 75)
+Textures = Array[Texture2D]([ExtResource("4_dwyxq"), ExtResource("6_hptxp"), ExtResource("7_i6jeu"), ExtResource("8_0bopy")])
 metadata/_edit_lock_ = true
 
 [node name="PortraitAnimation" type="AnimationPlayer" parent="GameRunning"]
@@ -213,10 +220,11 @@ offset_right = 1278.0
 offset_bottom = 431.0
 texture = ExtResource("4_dwyxq")
 
-[node name="UIState" type="Node" parent="." node_paths=PackedStringArray("GameRunning", "GameOver", "GameWon", "GameStarting", "ShiteProgressBar")]
+[node name="UIState" type="Node" parent="." node_paths=PackedStringArray("GameRunning", "GameOver", "GameWon", "GameStarting", "ShiteProgressBar", "PortraitSwitcher")]
 script = ExtResource("1_ah0em")
 GameRunning = NodePath("../GameRunning")
 GameOver = NodePath("../GameOver")
 GameWon = NodePath("../GameWon")
 GameStarting = NodePath("../GameStarting")
 ShiteProgressBar = NodePath("../GameRunning/ShiteBar")
+PortraitSwitcher = NodePath("../GameRunning/Potrait")

@@ -17,9 +17,13 @@ public partial class UIState : Node
 	[Export]
 	public TextureProgressBar ShiteProgressBar;
 
+	[Export]
+	public UIPortraitSwitcher PortraitSwitcher;
+
 	public override void _Process(double delta)
 	{
 		ShiteProgressBar.Value = GameState.CurrentShite / GameState.MaxShite * 100f;
+		PortraitSwitcher.ShiteChanged(GameState.CurrentShite);
 	}
 
 	public void _GameStatusChanged(int oldStatus, int newStatus)
