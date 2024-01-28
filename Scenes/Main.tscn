@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://6pjbexjuufqv"]
+[gd_scene load_steps=10 format=3 uid="uid://6pjbexjuufqv"]
 
 [ext_resource type="PackedScene" uid="uid://c2calhtr3rook" path="res://Scenes/Maps/Map2.tscn" id="1_5icwl"]
 [ext_resource type="Script" path="res://Src/GameState.cs" id="1_iuvoq"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b7vyupqwbknxk" path="res://Scenes/BGMusic.tscn" id="6_s214c"]
 [ext_resource type="PackedScene" uid="uid://bbum5plvdehjs" path="res://Scenes/Camera.tscn" id="7_cpcji"]
 [ext_resource type="PackedScene" uid="uid://cgf4llcpgalth" path="res://Scenes/GameSoundEffects.tscn" id="8_6aecs"]
+[ext_resource type="PackedScene" uid="uid://irav7vq2q52f" path="res://Scenes/FartSFX.tscn" id="9_yjeme"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_iuvoq")
@@ -39,13 +40,18 @@ Target = NodePath("../Player")
 
 [node name="GameSoundEffects" parent="." instance=ExtResource("8_6aecs")]
 
+[node name="FartSfx" parent="." instance=ExtResource("9_yjeme")]
+
+[connection signal="Farted" from="." to="FartSfx/AudioStreamPlayer" method="PlayFart"]
 [connection signal="GameStatusChange" from="." to="HUD/UIState" method="_GameStatusChanged"]
 [connection signal="GameStatusChange" from="." to="Player/PlayerMovement" method="OnGameStatusChanged"]
 [connection signal="GameStatusChange" from="." to="Player/CharacterRotation/Sprite" method="GameStatusChanged"]
 [connection signal="GameStatusChange" from="." to="GameSoundEffects" method="GameStatusChanged"]
+[connection signal="FartedKeyPressed" from="Player/PlayerMovement" to="." method="Fart"]
 [connection signal="body_entered" from="WinArea1" to="." method="WinTriggerEntered" unbinds=1]
 [connection signal="body_entered" from="WinArea2" to="." method="WinTriggerEntered" unbinds=1]
 [connection signal="body_entered" from="WinArea3" to="." method="WinTriggerEntered" unbinds=1]
 
 [editable path="HUD"]
 [editable path="Player"]
+[editable path="FartSfx"]

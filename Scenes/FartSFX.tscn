@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://djkl2ml33mavk"]
+[gd_scene load_steps=6 format=3 uid="uid://irav7vq2q52f"]
 
 [ext_resource type="Script" path="res://Src/Fart.cs" id="1_fk6ro"]
 [ext_resource type="AudioStream" uid="uid://du2x3s2b48nfj" path="res://SFX/huge-fart.mp3" id="2_u5mjx"]
