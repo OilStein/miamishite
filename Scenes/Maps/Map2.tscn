@@ -110,6 +110,9 @@ position = Vector2(1195, -1388)
 [node name="Chair4" parent="." instance=ExtResource("4_5xmuf")]
 position = Vector2(1192, -361)
 
+[node name="Chair24" parent="." instance=ExtResource("4_5xmuf")]
+position = Vector2(53, -28)
+
 [node name="Chair10" parent="." instance=ExtResource("2_dhckp")]
 position = Vector2(95, -2500)
 
@@ -133,6 +136,27 @@ position = Vector2(1324, -1806)
 
 [node name="Plant9" parent="." instance=ExtResource("5_pmqgm")]
 position = Vector2(1324, -1806)
+
+[node name="Plant14" parent="." instance=ExtResource("5_pmqgm")]
+position = Vector2(1318, -1908)
+
+[node name="Plant15" parent="." instance=ExtResource("5_pmqgm")]
+position = Vector2(1499, -2050)
+
+[node name="Plant16" parent="." instance=ExtResource("5_pmqgm")]
+position = Vector2(1503, -1947)
+
+[node name="Plant17" parent="." instance=ExtResource("5_pmqgm")]
+position = Vector2(1502, -1886)
+
+[node name="Plant18" parent="." instance=ExtResource("5_pmqgm")]
+position = Vector2(1597, -1879)
+
+[node name="Plant19" parent="." instance=ExtResource("5_pmqgm")]
+position = Vector2(1039, -1801)
+
+[node name="Plant21" parent="." instance=ExtResource("5_pmqgm")]
+position = Vector2(1039, -1801)
 
 [node name="Plant6" parent="." instance=ExtResource("5_pmqgm")]
 position = Vector2(1186, -1481)
@@ -164,3 +188,112 @@ rotation = 1.25664
 
 [node name="Plant10" parent="." instance=ExtResource("5_pmqgm")]
 position = Vector2(-1580, -1238)
+
+[node name="Chair12" parent="." instance=ExtResource("2_dhckp")]
+position = Vector2(-1365, -1615)
+
+[node name="Chair13" parent="." instance=ExtResource("2_dhckp")]
+position = Vector2(-712, -1616)
+
+[node name="Chair14" parent="." instance=ExtResource("2_dhckp")]
+position = Vector2(-207, -1351)
+
+[node name="Chair15" parent="." instance=ExtResource("2_dhckp")]
+position = Vector2(251, -1206)
+
+[node name="Chair16" parent="." instance=ExtResource("2_dhckp")]
+position = Vector2(549, -691)
+
+[node name="Chair17" parent="." instance=ExtResource("2_dhckp")]
+position = Vector2(1164, -907)
+
+[node name="Chair23" parent="." instance=ExtResource("2_dhckp")]
+position = Vector2(1164, -907)
+
+[node name="Chair18" parent="." instance=ExtResource("2_dhckp")]
+position = Vector2(-565, -810)
+
+[node name="Chair19" parent="." instance=ExtResource("2_dhckp")]
+position = Vector2(-567, -470)
+
+[node name="Chair20" parent="." instance=ExtResource("2_dhckp")]
+position = Vector2(-176, -464)
+
+[node name="Chair21" parent="." instance=ExtResource("2_dhckp")]
+position = Vector2(590, -884)
+
+[node name="Chair22" parent="." instance=ExtResource("2_dhckp")]
+position = Vector2(598, -465)
+
+[node name="Plant11" parent="." instance=ExtResource("5_pmqgm")]
+position = Vector2(-1806, -269)
+
+[node name="Plant12" parent="." instance=ExtResource("5_pmqgm")]
+position = Vector2(-894, -224)
+
+[node name="Plant13" parent="." instance=ExtResource("5_pmqgm")]
+position = Vector2(172, -219)
+
+[node name="Chair25" parent="." instance=ExtResource("2_dhckp")]
+position = Vector2(-956, -1815)
+
+[node name="Plant20" parent="." instance=ExtResource("5_pmqgm")]
+position = Vector2(-133, -2709)
+
+[node name="Plant23" parent="." instance=ExtResource("5_pmqgm")]
+position = Vector2(-208, -2706)
+
+[node name="Plant22" parent="." instance=ExtResource("5_pmqgm")]
+position = Vector2(-292, -2703)
+
+[node name="Plant24" parent="." instance=ExtResource("5_pmqgm")]
+position = Vector2(101, -2709)
+
+[node name="Plant25" parent="." instance=ExtResource("5_pmqgm")]
+position = Vector2(26, -2706)
+
+[node name="Plant26" parent="." instance=ExtResource("5_pmqgm")]
+position = Vector2(-58, -2703)
+
+[node name="Plant27" parent="." instance=ExtResource("5_pmqgm")]
+position = Vector2(340, -2715)
+
+[node name="Plant28" parent="." instance=ExtResource("5_pmqgm")]
+position = Vector2(265, -2712)
+
+[node name="Plant29" parent="." instance=ExtResource("5_pmqgm")]
+position = Vector2(181, -2709)
+
+[node name="Plant31" parent="." instance=ExtResource("5_pmqgm")]
+position = Vector2(508, -2718)
+
+[node name="Plant32" parent="." instance=ExtResource("5_pmqgm")]
+position = Vector2(424, -2715)
+
+[node name="Desk22" parent="." instance=ExtResource("3_8t20m")]
+position = Vector2(-774, -2046)
+
+[node name="Desk23" parent="." instance=ExtResource("3_8t20m")]
+position = Vector2(-766, -1788)
+rotation = -3.14159
+
+[node name="Plant30" parent="." instance=ExtResource("5_pmqgm")]
+position = Vector2(-636, -1978)
+
+[node name="Plant33" parent="." instance=ExtResource("5_pmqgm")]
+position = Vector2(-636, -1891)
+
+[node name="Plant34" parent="." instance=ExtResource("5_pmqgm")]
+position = Vector2(-1085, -1640)
+
+[node name="Plant35" parent="." instance=ExtResource("5_pmqgm")]
+position = Vector2(-1856, -1796)
+
+[node name="Plant36" parent="." instance=ExtResource("5_pmqgm")]
+position = Vector2(-1866, -2090)
+
+[node name="Plant37" parent="." instance=ExtResource("5_pmqgm")]
+position = Vector2(-1331, -1802)
+
+[node name="Plant38" parent="." instance=ExtResource("5_pmqgm")]
+position = Vector2(-314, -1084)
