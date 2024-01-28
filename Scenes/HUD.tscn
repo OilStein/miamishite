@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dak71gc588404" path="res://Graphics/Portraits/stage2.png" id="6_hptxp"]
 [ext_resource type="Texture2D" uid="uid://blyi42bom230x" path="res://Graphics/Portraits/stage3.png" id="7_i6jeu"]
 [ext_resource type="Texture2D" uid="uid://dkfctfem1wtly" path="res://Graphics/Portraits/stage4.png" id="8_0bopy"]
-[ext_resource type="Texture2D" uid="uid://h5rm5hc2kewg" path="res://Graphics/endscreen.png" id="9_a8e8j"]
+[ext_resource type="Texture2D" uid="uid://cpxvnio4xljpe" path="res://Graphics/endscreen.png" id="9_a8e8j"]
 
 [sub_resource type="Animation" id="Animation_m4us4"]
 resource_name = "portrait_wave"
@@ -106,7 +106,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Background" type="TextureRect" parent="GameOver"]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.485
@@ -119,7 +118,6 @@ grow_vertical = 2
 texture = SubResource("GradientTexture1D_bpehp")
 
 [node name="Cringe" type="Label" parent="GameOver/Background"]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.526
