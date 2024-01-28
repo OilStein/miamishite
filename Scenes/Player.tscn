@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://diplkpmcm4eae"]
+[gd_scene load_steps=19 format=3 uid="uid://diplkpmcm4eae"]
 
 [ext_resource type="Script" path="res://Src/CharacterMovement.cs" id="1_eqgsy"]
 [ext_resource type="Texture2D" uid="uid://h76tqye6q822" path="res://Graphics/RunningSprite/run_1.png" id="2_4bmhi"]
@@ -6,7 +6,9 @@
 [ext_resource type="Script" path="res://Src/PlayerMovement.cs" id="2_v27w2"]
 [ext_resource type="Texture2D" uid="uid://bwda03r2vxsty" path="res://Graphics/RunningSprite/run_2.png" id="3_spqur"]
 [ext_resource type="Texture2D" uid="uid://biveh0t3t7isp" path="res://Graphics/PlayerIdle.png" id="4_gr08q"]
+[ext_resource type="Texture2D" uid="uid://du6offjjo2t3k" path="res://Graphics/deathidle.png" id="4_injh3"]
 [ext_resource type="Texture2D" uid="uid://7xr0ol3e2wj5" path="res://Graphics/RunningSprite/run_3.png" id="4_rkn4s"]
+[ext_resource type="Texture2D" uid="uid://1y65amxyu18b" path="res://Graphics/helpotusidle.png" id="5_micds"]
 [ext_resource type="Texture2D" uid="uid://cqwv0im58gtry" path="res://Graphics/RunningSprite/run_4.png" id="5_q6wnt"]
 [ext_resource type="Texture2D" uid="uid://dr6fg2xp71xce" path="res://Graphics/RunningSprite/run_5.png" id="6_70dr3"]
 [ext_resource type="Texture2D" uid="uid://861yn2qk84ws" path="res://Graphics/RunningSprite/run_6.png" id="7_0m2dt"]
@@ -20,6 +22,22 @@ radius = 80.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_h25e3"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_injh3")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_micds")
+}],
+"loop": true,
+"name": &"helpotus",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("4_gr08q")
@@ -69,7 +87,7 @@ script = ExtResource("2_nwp0j")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="CharacterRotation"]
 sprite_frames = SubResource("SpriteFrames_h25e3")
-animation = &"idle"
+animation = &"death"
 script = ExtResource("8_obaqq")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
@@ -77,7 +95,3 @@ script = ExtResource("12_psccd")
 RightFootstep = ExtResource("13_n2nt4")
 LeftFootstep = ExtResource("14_635sf")
 Interval = 0.5
-
-[connection signal="MovementChanged" from="." to="CharacterRotation" method="MoveDirectionChanged"]
-[connection signal="MovementChanged" from="." to="CharacterRotation/Sprite" method="MoveDirectionChanged"]
-[connection signal="MovementChanged" from="." to="AudioStreamPlayer" method="MoveDirectionChanged"]
